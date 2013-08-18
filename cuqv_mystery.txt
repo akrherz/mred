@@ -1,0 +1,30 @@
+Vertically integrated water vapor flux
+
+solve.F (line 2377)
+
+UCC (4 grid cell average U wind)
+VCC (4 grid cell average V wind)
+PR1 (pressure, PR0 + PP3D)
+
+UQV(I,J,K) = UCC(I,J,K)*QV3D(I,J,K)*DT
+  m          m s-1      kg kg-1     s 
+
+DPOVERG = (PR1(I,J,K) - PR1(I,J,K-1))/9.81
+kg m-2     kg m-1 s-2                s*s m-1
+
+DUQV = UQV(I,J,K) - UQV(I,J,K-1)
+          m
+
+IF (DUQV .LT. 0) THEN
+  AREA = UQV(I,J,K-1)*DPOVERG - (-1.0)*0.5*DUQV*DPOVERG
+  kg m-1   m           kg m-2                m    kg m-2
+ELSE
+  IF (K .EQ. KL+1) THEN
+    AREA = UA10(I,J)*QA2(I,J)*DT*DPOVERG - 0.5*DUQV*DPOVERG
+  ELSE
+    AREA = UQV(I,J,K)*DPOVERG - 0.5*DUQV*DPOVERG
+  ENDIF
+ENDIF
+
+
+UQVFLUX(I,J) = UQVFLUX(I,J) + AREA

@@ -1,0 +1,52 @@
+From akrherz@iastate.edu Tue Jul  7 07:58:12 2009
+Date: Tue, 7 Jul 2009 07:58:12 -0500 (CDT)
+From: daryl herzmann <akrherz@iastate.edu>
+To: cjames@iastate.edu, Ray Arritt <rwarritt@bruce.agron.iastate.edu>
+Cc: flory@iastate.edu
+Subject: Finalizing MRED MM5 Domain
+
+Hi guys,
+
+I am seeking to finalize the MM5 domain.  Here is what I currently have 
+going and attached output from the TER.PLT file:
+
+     135 : COARSE DOMAIN GRID DIMENSION IN I (N-S) DIRECTION
+     200 : COARSE DOMAIN GRID DIMENSION IN J (E-W) DIRECTION
+       1 : MAP PROJECTION. 1: LAMBERT CONFORMAL, 2: POLAR
+           STEREOGRAPHIC, 3: MERCATOR
+       1 : IS COARSE DOMAIN EXPANDED?, 1: YES, 0: NO
+     159 : EXPANDED COARSE DOMAIN GRID DIMENSION IN I DIRECTION
+     224 : EXPANDED COARSE DOMAIN GRID DIMENSION IN J DIRECTION
+      12 : GRID OFFSET IN I DIR DUE TO COARSE GRID EXPANSION
+      12 : GRID OFFSET IN J DIR DUE TO COARSE GRID EXPANSION
+     135 : DOMAIN GRID DIMENSION IN I DIRECTION
+     200 : DOMAIN GRID DIMENSION IN J DIRECTION
+32000.00: COARSE DOMAIN GRID DISTANCE (m)
+   38.00 : COARSE DOMAIN CENTER LATITUDE (degree)
+  -97.00 : COARSE DOMAIN CENTER LONGITUDE (degree)
+    0.72 : CONE FACTOR
+   60.00 : TRUE LATITUDE 1 (degree)
+   30.00 : TRUE LATITUDE 2 (degree)
+   90.00 : POLE POSITION IN DEGREE LATITUDE
+360000.00 : APPROX EXPANSION (m)
+32000.00: GRID DISTANCE (m) OF THIS DOMAIN
+
+This is slightly different than what Chris had setup previously:
+   - Shifted domain 3 deg north
+   - Added 12 point expansion (did I do this correctly?)
+
+Any comments?
+
+daryl
+
+
+-- 
+/**
+  * Daryl Herzmann
+  * Assistant Scientist -- Iowa Environmental Mesonet
+  * http://mesonet.agron.iastate.edu
+  */
+
+
+    [ Part 2, ""  Image/PNG (Name: "domain.png") 15 KB. ]
+    [ Unable to print this part. ]

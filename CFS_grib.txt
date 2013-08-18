@@ -1,0 +1,26 @@
++ cuhusa     (take some effort me thinks)
++ cvhusa     (take some effort me thinks)
++ hfls       PDS #4 FLX
++ hfss       PDS #3 FLX
++ huss       PDS #28 FLX
++ mpuhusa    PDS #88 PGB (sph) * PDS #135 PGB
++ mpvhusa    PDS #88 PGB (sph) * PDS #152 PGB
+mrro       ???
++ mrros      PDS #34 FLX
++ mrso       PDS #6 + PDS #7 FLX (to 2 meters)
++ pr         PDS #20 PGB  PRATE_2_SFC_ave3h PRATE_2_SFC_10
++ prw        PDS #194 PGB
++ ps         PDS #208 PGB
++ psl        PDS #210 PGB
++ rlds       PDS #11 FLX
++ rsds       PDS #16 FLX
++ snd        PDS #10 FLX  Water Equiv...
++ tas        PDS #27 FLX  TMP_2_HTGL_10
++ tasmax
++ tasmin
++ uas        PDS #25 FLX
++ vas        PDS #26 FLX
++ zg200      PDS #10 PGB
++ zg500      PDS #6  PGB
++ zg850      PDS #3  PGB
+           PDS #23 FLX  Land/Sea Mask

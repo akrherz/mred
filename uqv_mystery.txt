@@ -1,0 +1,22 @@
+Jack noted that our mpuhusa and mpvhusa were off by a factor of 100 or
+so.
+
+outtap.F has
+      CALL EQUATO(UQV850,MIX,MJX,1,HDOTH,IL,JL,1)
+      CALL WRITE_FIELDREC(IUTNC,D2,nescou,HDOTH,XTIME,
+     +                        'UQV850',CURRENT_DATE,
+     +                        'C','YX','M S-1',
+     +                        'UQV850',
+     +                        IX,JX,1,MIX,MJX,1 )
+
+solve.F has
+   UQV850(I,J) = UQV(I,J,K) - DUQV*DL850/DLP
+   UQV(I,J,K) = UCC(I,J,K)*QV3D(I,J,K)*DT 
+   UCC(I,J,K)=0.25*(U3D(I,J,K)+U3D(I+1,J,K)+U3D(I,J+1,K)+U3D(I+1,J+1,K))
+   DL850 = LOG(PR1(I,J,K)) - LOG(85000.)
+   DLP = LOG(PR1(I,J,K)) - LOG(PR1(I,J,K-1))
+   DUQV = (UQV(I,J,K) - UQV(I,J,K-1))/DT
+
+
+The multiplication by DT for UQV looks suspect.  Is that correct?
+

@@ -1,0 +1,23 @@
+
+outtap.F
+ SURROFF(I,J) = SURROFF(I,J)/NUMSTEPS
+
+ CALL EQUATO(SURROFF,MIX,MJX,1,HDOTH,IL,JL,1)
+      CALL WRITE_FIELDREC(IUTNC,D2,nescou,HDOTH,XTIME,
+     +                        'SURROFF',CURRENT_DATE,
+     +                        'C','YX','KG M-2 S-1',
+     +                        'SURFACE RUNOFF',
+     +                        IX,JX,1,MIX,MJX,1 )
+
+solve.F
+   SURROFF(I,J) = SURROFF(I,J) + (SSROFF(I,J)/(DTMIN*60.))
+
+surfce.F
+   # Converts to mm
+   SSROFF(I,J)=SSROFF(I,J)+RNOF1K*DTHALF*1000.0
+   DTHALF=DTMIN*60.0  
+   CALL SFLX (ICE.... RNOF1K)
+
+RNOF1K is in m s-1
+
+

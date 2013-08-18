@@ -1,0 +1,133 @@
+From jritchie@ucsd.edu Fri Oct  2 17:18:54 2009
+Date: Fri, 2 Oct 2009 15:18:51 -0700 (PDT)
+From: Jack Ritchie <jritchie@ucsd.edu>
+To: daryl herzmann <akrherz@iastate.edu>
+Subject: Re: MRED ISU MM5 output test files
+
+
+Daryl,
+
+I am having some trouble with your files that I have not previously
+experienced. Although I can run ncdump from the ncarg package to
+examine them, when I try to read them using the netcdf library, I
+get:
+
+ncopen: filename "cuhusa_IMM5_1988112903.nc": Not a netCDF file
+
+It may be that IDL or some other package we have could read them,
+but I am wondering if you might be able to fix it. I have installed
+several netcdf versions and binutils libraries in my attempt to
+read them, but so far, to no avail.
+
+
+
+
+Regarding the headers:
+
+
+FILENAME format:
+snd_IMM5_1988112903.nc  -> snd_IMM5_1988112903_CFS01.nc
+--------------
+All variables should have an AXIS attribute:
+                 time:axis = "T" ;
+                 lon:axis = "X" ;
+                 lat:axis = "Y" ;
+Those variables with "singletons" will have an additional
+   attribute of either:
+                 height:axis = "Z" ;
+   vas uas tasmin tasmax tas huss
+                 plev:axis = "Z" ;
+   mpuhusa mpvhusa zg850 zg500 zg200
+--------------
+All files have UNITS attributes:
+                 time:units = "days since 1988-11-29 00:00:00.0" ;
+                 lat:units = "degrees_north" ;
+                 lon:units = "degrees_east" ;
+   vas uas tasmin tasmax tas huss
+   also have     height:units = "m" ;
+   mpuhusa mpvhusa zg850 zg500 zg200
+   also have     plev:units = "Pa" ;
+--------------
+STD NAME
+mrros:standard_name = "runoff_flux" ; -> "surface_runoff_flux"
+   vas uas tasmin tasmax tas huss
+   also have     height:standard_name = "height" ;
+   mpuhusa mpvhusa zg850 zg500 zg200
+   also have     plev:standard_name = "air_pressure" ;
+--------------
+BOUNDS attibute for time only neccesary for
+   cuhusa cvhusa hfls hfss mrro pr psl rsds rlds mrros
+   those variables where the cell method involves a mean
+--------------
+CELL_METHOD
+   rsds:cell_methods = "time: mean (interval: 3 hours)" ;
+--------------
+COORDS:
+                 cuhusa:coordinates = "lon lat" ;
+                 cvhusa:coordinates = "lon lat" ;
+                 hfls:coordinates = "lon lat" ;
+                 hfss:coordinates = "lon lat" ;
+                 huss:coordinates = "lon lat height " ;
+                 mpuhusa:coordinates = "lon lat plev " ;
+                 mpvhusa:coordinates = "lon lat plev " ;
+                 mrro:coordinates = "lon lat" ;
+                 mrso:coordinates = "lon lat" ;
+                 pr:coordinates = "lon lat" ;
+                 prw:coordinates = "lon lat" ;
+                 psl:coordinates = "lon lat" ;
+                 ps:coordinates = "lon lat" ;
+                 rsds:coordinates = "lon lat" ;
+                 snd:coordinates = "lon lat" ;
+                 tas:coordinates = "lon lat height " ;
+                 zg200:coordinates = "lon lat plev " ;
+                 zg500:coordinates = "lon lat plev " ;
+                 zg850:coordinates = "lon lat plev " ;
+                 tasmax:coordinates = "lon lat height " ;
+                 tasmin:coordinates = "lon lat height " ;
+                 uas:coordinates = "lon lat height " ;
+                 vas:coordinates = "lon lat height " ;
+                 rlds:coordinates = "lon lat" ;
+                 mrros:coordinates = "lon lat" ;
+--------------
+Missing global FORCING attribute:
+                 :forcing_data = "CFS01" ;
+--------------
+REALIZATION is an integer (not char)
+--------------
+POSITIVE attribute:
+   vas uas tasmin tasmax tas huss
+   have          height:positive = "up" ;
+   mpuhusa mpvhusa zg850 zg500 zg200
+   have          plev:positive = "down" ;
+and:
+                 cuhusa:positive = "east" ;
+                 cvhusa:positive = "north" ;
+                 hfls:positive = "up" ;
+                 hfss:positive = "up" ;
+                 mpuhusa:positive = "east" ;
+                 mpvhusa:positive = "north" ;
+--------------
+
+
+Have a great weekend!
+
+
+Cheers,
+Jack
+
+
+------------------------------------------------------------------------------
+                  Jack Ritchie / UCSD / SIO / CASPO / ECPC
+------------------------------------------------------------------------------
+Mailing Address:                                    Contact:
+      Scripps Institution of Oceanography                 Tel.(858)534-7515
+      University of California, San Diego                 Fax (858)534-8561
+      9500 Gilman Drive                                   Nierenberg Hall 426
+      La Jolla, CA 92093-0224                             jritchie@ucsd.edu
+------------------------------------------------------------------------------
+  Express Delivery Address:
+      8810 Shellback Way
+      Nierenberg Hall 426
+      La Jolla, CA 92037
+------------------------------------------------------------------------------
+

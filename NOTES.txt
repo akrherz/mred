@@ -1,0 +1,46 @@
+9 Jul 2009 -
+  15 point EXPOBC needs to have a modification done to INTERP to support
+  it.  NSPGX needs to be hard coded in src/module_bdy.F
+
+12 Jul 2009 -
+  Fix a bug with date.F and how NFEB does its thing
+
+12 Jul 2009 -
+  Figure out why NCOUT_DOMAIN1_** would not be read by archiver, turns
+  out that write_big_header.F has the reason why, RSL eats the data.
+  need to modify outttap.F to make local copies of the variables and
+  then can call write twice.
+
+16 Jul 2009 -
+  Tweak interpb to not add snowcovr, since we already have it
+
+22 Jul 2009 -
+  Added a simple check to TMIN assignment to make sure TA2 is not
+  zero!
+
+17 Nov 2009 -
+  IXTIMR !!!!!!!!!!!!!!!!!!!!
+
+  MPP/RSL/Makefile.RSL to fix NSPGX
+
+19 Feb 2010
+  Dr Arritt found some bad output data, wrote a script to figure out the
+  damage:
+    x1982120100 x1982112900 x1997112200 x1990120300 x1999111400 x1998111400
+    x1991112200 x1982120300 x2003111100 x1982113000 x1985111400 
+
+20 Feb 2010
+  Still bad :(
+    x1982120100 x1982112900 x1997112200 x1990120300 
+    x1999111400 x1991112200 x1982120300 x1982113000 
+
+Terrain bug:
+src/terdrv.F
+
+          CALL WATERCHECK(IX,JX,NVC,FORCETER, VEGEC, LVEGE, IVWATER,
+      -                   49.0, RAD,DIS(N),IPRINT) 
+C
+        IF (.NOT.VEGONLY)
+      -   CALL WATERCHECK(IX,JX,NSC,FORCETER, SOILC, LSOIL, ISWATER,
+      -                   49.0, RAD,DIS(N),IPRINT)
+
