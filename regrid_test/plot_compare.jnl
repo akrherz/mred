@@ -1,0 +1,6 @@
+use remapbil.nc
+use remapnn.nc
+shade/LEV=(-100,100,10)/TITLE="MARCH 1995 Total Precip [mm] (NN - BILIN)"  (pr[T=1-MAR-1995:1-APR-1995@SUM,d=2] - pr[T=1-MAR-1995:1-APR-1995@SUM,d=1]) * 10800
+go land_detail black overlay 1 1
+FRAME/file=compare.gif
+exit

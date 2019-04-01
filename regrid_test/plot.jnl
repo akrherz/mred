@@ -1,0 +1,5 @@
+use cfs_orig.nc
+shade/LEV=(0,400,25)/TITLE="MARCH 1995 Total Precip [mm] (ORIG)"  (pr[T=1-MAR-1995:1-APR-1995@SUM,X=124.75W:67W,Y=24.75:49.125] * 10800)
+go land_detail black overlay 1 1
+FRAME/file=orig.gif
+exit
